@@ -6,8 +6,14 @@ using System;
 
 public class InterfaceController : MonoBehaviour {
 
+	/* Class controls the app UI. Main features:
+	 * - display current UTC time
+	 * - dispatch one event every even second
+	 */
+
 	public static InterfaceController instance;
 
+	[Header("Variables for Inspector")]
 	[SerializeField] Animator buttonAnimator;
 	[SerializeField] Animator clockLayoutAnimator;
 	[SerializeField] Text clockText;
@@ -18,13 +24,16 @@ public class InterfaceController : MonoBehaviour {
 
 	void Awake()
 	{
+		//Prepare class and canvases
 		instance = this;
 		lastShownTime = DateTime.UtcNow;
 		if (!buttonAnimator.gameObject.activeSelf) buttonAnimator.gameObject.SetActive(true);
 		if (clockLayoutAnimator.gameObject.activeSelf) clockLayoutAnimator.gameObject.SetActive(false);
 	}
 
-	//Button methods
+	/// <summary>
+	/// Button method for UI
+	/// </summary>
 	public void Bn_StartApp()
 	{
 		appStarted = true;
@@ -40,7 +49,6 @@ public class InterfaceController : MonoBehaviour {
 			DateTime timeCheck = DateTime.UtcNow;
 			if (HasTimeChanged(timeCheck))
 			{
-				//clockText.text = string.Format("{0}:{1}:{2}", timeCheck.Hour, timeCheck.Minute, timeCheck.Second);
 				clockText.text = timeCheck.ToString("hh:mm:ss");
 				lastShownTime = timeCheck;
 

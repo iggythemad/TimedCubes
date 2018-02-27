@@ -5,10 +5,17 @@ using UnityEngine.UI;
 
 public class CubeGenerator : MonoBehaviour {
 
+	/* Class controls the Cube generation. Main features:
+	 * - display cubes in a grid
+	 * - utilise old cubes to save resources
+	 */
+
+	[Header("Variables for Inspector")]
 	[SerializeField] RectTransform layout;
 	[SerializeField] GameObject cubePrefab;
 	[SerializeField] Vector3 offset;
 	[SerializeField] int maxGridX, maxGridY;
+
 	int currentX = 0, currentY = 0;
 	Queue<GameObject> cubeQueue = new Queue<GameObject>();
 
@@ -23,7 +30,7 @@ public class CubeGenerator : MonoBehaviour {
 	/// </summary>
 	void CubeTick()
 	{
-		//Prepare a cube and assign a new position
+		//Prepare a cube and assign a new position on the layout
 		Transform cube = CreateOrReuseCube().transform;
 		cube.position = new Vector3(offset.x * currentX, offset.y * currentY, 0) + layout.position - new Vector3(layout.rect.size.x/2, -layout.rect.size.y/2, 0);
 
