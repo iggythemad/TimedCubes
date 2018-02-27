@@ -52,7 +52,7 @@ public class InterfaceController : MonoBehaviour {
 				clockText.text = timeCheck.ToString("hh:mm:ss");
 				lastShownTime = timeCheck;
 
-				//Check is seconds are even
+				//Check if seconds are even
 				if(timeCheck.Second % 2 == 0)
 				{
 					//dispatch an event to any class that needs it
