@@ -27,6 +27,7 @@ public class InterfaceController : MonoBehaviour {
 		//Prepare class and canvases
 		instance = this;
 		lastShownTime = DateTime.UtcNow;
+		clockText.text = lastShownTime.ToString("hh:mm:ss");
 		if (!buttonAnimator.gameObject.activeSelf) buttonAnimator.gameObject.SetActive(true);
 		if (clockLayoutAnimator.gameObject.activeSelf) clockLayoutAnimator.gameObject.SetActive(false);
 	}
@@ -46,7 +47,9 @@ public class InterfaceController : MonoBehaviour {
 	{
 		if (appStarted)
 		{
-			DateTime timeCheck = DateTime.UtcNow;
+			//Save time ignoring miliseconds for time difference calculation purposes
+			DateTime ut = DateTime.UtcNow;
+			DateTime timeCheck = new DateTime(ut.Year, ut.Month, ut.Day, ut.Hour, ut.Minute, ut.Second);
 			if (HasTimeChanged(timeCheck))
 			{
 				clockText.text = timeCheck.ToString("hh:mm:ss");
