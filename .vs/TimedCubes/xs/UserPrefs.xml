@@ -1,0 +1,17 @@
+﻿<Properties StartupConfiguration="{3E1D4045-59B3-CE89-391D-61245BF1284F}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../../../../Library/Frameworks/Mono.framework/Versions/5.8.0/lib/mono/msbuild/15.0/bin/Microsoft.Common.CurrentVersion.targets">
+    <Files>
+      <File FileName="Assets/Scripts/CubeGenerator.cs" Line="50" Column="9" />
+      <File FileName="../../../../../Library/Frameworks/Mono.framework/Versions/5.8.0/lib/mono/msbuild/15.0/bin/Microsoft.Common.CurrentVersion.targets" Line="2057" Column="5" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/marcinlazowski/Documents/Projects/TimedCubes/Assets/Scripts/CubeGenerator.cs" relfile="Assets/Scripts/CubeGenerator.cs" line="50" column="9" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.TimedCubes PreferredExecutionTarget="Unity.Editor" />
+  <MultiItemStartupConfigurations />
+</Properties>
