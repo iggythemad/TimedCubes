@@ -45,24 +45,18 @@ public class InterfaceController : MonoBehaviour {
 
 	void Update()
 	{
-		if (appStarted)
-		{
-			//Save time ignoring miliseconds for time difference calculation purposes
-			DateTime ut = DateTime.UtcNow;
-			DateTime timeCheck = new DateTime(ut.Year, ut.Month, ut.Day, ut.Hour, ut.Minute, ut.Second);
-			if (HasTimeChanged(timeCheck))
-			{
-				clockText.text = timeCheck.ToString("hh:mm:ss");
-				lastShownTime = timeCheck;
+	    if (!appStarted) return;
+	    //Save time ignoring miliseconds for time difference calculation purposes
+	    DateTime ut = DateTime.UtcNow;
+	    DateTime timeCheck = new DateTime(ut.Year, ut.Month, ut.Day, ut.Hour, ut.Minute, ut.Second);
+	    if (!HasTimeChanged(timeCheck)) return;
+	    clockText.text = timeCheck.ToString("hh:mm:ss");
+	    lastShownTime = timeCheck;
 
-				//Check if seconds are even
-				if(timeCheck.Second % 2 == 0)
-				{
-					//dispatch an event to any class that needs it
-					if (eEvenSecond != null) eEvenSecond();
-				}
-			}
-		}
+	    //Check if seconds are even
+	    if (timeCheck.Second % 2 != 0) return;
+	    //dispatch an event to any class that needs it
+	    if (eEvenSecond != null) eEvenSecond();
 	}
 
 	/// <summary>
