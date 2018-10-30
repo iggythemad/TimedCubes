@@ -31,7 +31,7 @@ public class CubeGenerator : MonoBehaviour {
 	void CubeTick()
 	{
 		//Prepare a cube and assign a new position on the layout
-		Transform cube = CreateOrReuseCube().transform;
+		var cube = CreateOrReuseCube().transform;
 		cube.position = new Vector3(_offset.x * _currentX, _offset.y * _currentY, 0) + _layout.position - new Vector3(_layout.rect.size.x/2, -_layout.rect.size.y/2, 0);
 
 		//Prepare next position on grid
@@ -50,7 +50,7 @@ public class CubeGenerator : MonoBehaviour {
 		if (_cubeQueue.Count < 10)
 		{
 			//Instantiate a new cube and save it as newest
-			GameObject go = Instantiate(_cubePrefab, _layout, false);
+			var go = Instantiate(_cubePrefab, _layout, false);
 			_cubeQueue.Enqueue(go);
 			go.name = "Cube " + _cubeQueue.Count;
 			return go;
@@ -58,7 +58,7 @@ public class CubeGenerator : MonoBehaviour {
 		else
 		{
 			//Reuse oldest cube and save it as newest
-			GameObject go = _cubeQueue.Dequeue();
+			var go = _cubeQueue.Dequeue();
 			_cubeQueue.Enqueue(go);
 			return go;
 		}
