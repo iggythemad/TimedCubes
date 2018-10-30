@@ -36,13 +36,11 @@ public class CubeGenerator : MonoBehaviour {
 
 		//Prepare next position on grid
 		_currentX++;
-		if(_currentX > _maxGridX)
-		{
-			_currentX = 0;
-			_currentY++;
-			if (_currentY > _maxGridY)
-				_currentY = 0;
-		}
+	    if (_currentX <= _maxGridX) return;
+	    _currentX = 0;
+	    _currentY++;
+	    if (_currentY > _maxGridY)
+	        _currentY = 0;
 	}
 
 	GameObject CreateOrReuseCube()
