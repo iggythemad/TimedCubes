@@ -47,8 +47,8 @@ public class InterfaceController : MonoBehaviour {
 	{
 	    if (!appStarted) return;
 	    //Save time ignoring miliseconds for time difference calculation purposes
-	    DateTime ut = DateTime.UtcNow;
-	    DateTime timeCheck = new DateTime(ut.Year, ut.Month, ut.Day, ut.Hour, ut.Minute, ut.Second);
+	    var ut = DateTime.UtcNow;
+	    var timeCheck = new DateTime(ut.Year, ut.Month, ut.Day, ut.Hour, ut.Minute, ut.Second);
 	    if (!HasTimeChanged(timeCheck)) return;
 	    clockText.text = timeCheck.ToString("hh:mm:ss");
 	    lastShownTime = timeCheck;
