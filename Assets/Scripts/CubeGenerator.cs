@@ -11,13 +11,13 @@ public class CubeGenerator : MonoBehaviour {
 	 */
 
 	[Header("Variables for Inspector")]
-	[SerializeField] RectTransform layout;
-	[SerializeField] GameObject cubePrefab;
-	[SerializeField] Vector3 offset;
-	[SerializeField] int maxGridX, maxGridY;
+	[SerializeField] RectTransform _layout;
+	[SerializeField] GameObject _cubePrefab;
+	[SerializeField] Vector3 _offset;
+	[SerializeField] int _maxGridX, _maxGridY;
 
-	int currentX = 0, currentY = 0;
-	Queue<GameObject> cubeQueue = new Queue<GameObject>();
+	int _currentX = 0, _currentY = 0;
+	Queue<GameObject> _cubeQueue = new Queue<GameObject>();
 
 	private void Start()
 	{
@@ -32,34 +32,34 @@ public class CubeGenerator : MonoBehaviour {
 	{
 		//Prepare a cube and assign a new position on the layout
 		Transform cube = CreateOrReuseCube().transform;
-		cube.position = new Vector3(offset.x * currentX, offset.y * currentY, 0) + layout.position - new Vector3(layout.rect.size.x/2, -layout.rect.size.y/2, 0);
+		cube.position = new Vector3(_offset.x * _currentX, _offset.y * _currentY, 0) + _layout.position - new Vector3(_layout.rect.size.x/2, -_layout.rect.size.y/2, 0);
 
 		//Prepare next position on grid
-		currentX++;
-		if(currentX > maxGridX)
+		_currentX++;
+		if(_currentX > _maxGridX)
 		{
-			currentX = 0;
-			currentY++;
-			if (currentY > maxGridY)
-				currentY = 0;
+			_currentX = 0;
+			_currentY++;
+			if (_currentY > _maxGridY)
+				_currentY = 0;
 		}
 	}
 
 	GameObject CreateOrReuseCube()
 	{
-		if (cubeQueue.Count < 10)
+		if (_cubeQueue.Count < 10)
 		{
 			//Instantiate a new cube and save it as newest
-			GameObject go = Instantiate(cubePrefab, layout, false);
-			cubeQueue.Enqueue(go);
-			go.name = "Cube " + cubeQueue.Count;
+			GameObject go = Instantiate(_cubePrefab, _layout, false);
+			_cubeQueue.Enqueue(go);
+			go.name = "Cube " + _cubeQueue.Count;
 			return go;
 		}
 		else
 		{
 			//Reuse oldest cube and save it as newest
-			GameObject go = cubeQueue.Dequeue();
-			cubeQueue.Enqueue(go);
+			GameObject go = _cubeQueue.Dequeue();
+			_cubeQueue.Enqueue(go);
 			return go;
 		}
 	}
